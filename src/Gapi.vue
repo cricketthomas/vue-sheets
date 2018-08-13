@@ -1,74 +1,61 @@
 <template>
   <div id="axios">
-    <h1>Sheet Data</h1>
-    <input type="search" v-model="search" placeholder="Search Data" />
-
+    <h1>Sheet Data
+      <br/> Total: {{total}}</h1>
+    <input type="search" v-model="search" placeholder="Search Data" class="search" />
+    <p>Results: {{filteredSheets.length}}</p>
     <div v-for="row in filteredSheets" class="sheets">
-      Date: {{row.Date}} Origin of Hack: {{row.Country}}
-      <a v-html="row.URL" href="row.URL">{{row.URL}}</a>
-
+      Date: {{row.date}} Origin of Hack: {{row.country}}
+      <a v-bind:href="row.url" v-html="row.url">{{row.url}}</a>
     </div>
-
-
   </div>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import axios from 'axios'
+  import Vue from 'vue';
+  import axios from 'axios';
+  import EventBus from './event-bus.js';
   Vue.prototype.$http = axios;
-
   export default {
+    props: ['sheets'],
     data() {
       return {
-        info: null,
-        sheets: [],
-        search: ""
+        search: "",
       }
     },
-    mounted() {
-      axios
-        .get('https://sheetdb.io/api/v1/5b6da57ab78ee')
-        //.then(response => (this.sheet = response))
-        .then(response => (this.sheets = response.data))
-        .catch(error => console.log(error))
-      /*
-        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then(response => (this.info = response.data.bpi))
-        .catch(error => console.log(error))
-      
-              .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-              .then(response => (this.info = response.data.bpi))
-              .catch(error => console.log(error)) */
-    },
 
-    filters: {
-
-    },
     computed: {
-      filteredSheets: function () {
+      filteredSheets() {
         let searching = (this.search || "").toLowerCase()
         return this.sheets.filter(function (item) {
-          let date = (item.Date || "").toLowerCase()
-          let urls = (item.URL || "").toLowerCase()
-          let country = (item.Country || "").toLowerCase()
+          let date = (item.date || "").toLowerCase()
+          let urls = (item.url || "").toLowerCase()
+          let country = (item.country || "").toLowerCase()
           return date.indexOf(searching) > -1 || urls.indexOf(searching) > -1 || country.indexOf(searching) > -1
         })
-      }
+      },
+      total() {
+        return this.sheets.length
+      },
     }
   }
-
 </script>
 
 <style>
+  .search {
+    justify-content: right;
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
   h1 {
     justify-content: center;
     display: flex;
   }
 
   .sheets {
-    color: red;
-
+    background: whitesmoke;
+    padding: 1em;
   }
-
 </style>

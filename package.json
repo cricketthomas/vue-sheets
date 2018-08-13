@@ -2,7 +2,7 @@
   "name": "vue-sheets",
   "description": "A Vue.js project",
   "version": "1.0.0",
-  "author": "Arthur",
+  "author": "Arthur Thomas",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "chart.js": "^2.7.2",
+    "hchs-vue-charts": "^1.2.8",
     "vue": "^2.5.11",
     "vue-gapi": "0.0.8"
   },
