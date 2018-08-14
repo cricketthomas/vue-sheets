@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <google-api v-bind:sheets="sheets"></google-api>
+    <br/>
     <charts v-bind:sheets="sheets"></charts>
   </div>
 
@@ -19,7 +20,8 @@
     },
     mounted() {
       axios
-        .get('https://sheetdb.io/api/v1/5b6da57ab78ee')
+        .get('https://api.myjson.com/bins/bwjkk')
+        //'https://sheetdb.io/api/v1/5b6da57ab78ee'
         .then(response => (this.sheets = response.data))
         .catch(error => console.log(error))
     },
