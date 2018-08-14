@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2>Donut</h2>
-    <button @click="notice">Button</button>
+    <h2 class="card">Most Sucessful Hackers</h2>
+    <br>
     <div class="card">
-      <chartjs-doughnut v-bind:labels="labels" v-bind:datasets="datasets" v-bind:option="option" v-bind:bind="true" :options="{responsive: false, maintainAspectRatio: false}"
+      <chartjs-bar v-bind:labels="labels" v-bind:datasets="datasets" v-bind:option="option" v-bind:bind="true" :options="{responsive: false, maintainAspectRatio: false}"
         :width="900" :height="700" />
     </div>
     <!--<p v-for="row in hackers">{{row}}, count: {{row.length}}</p> -->
@@ -25,12 +25,16 @@
 
         //labels: ["Foo", "Bar", "Baz"],
         datasets: [{
-          data: [1,2,3,4,5,6,7,8],
-          backgroundColor: ["#673ab7", "#2196f3", "#03a9f4", "red","green","yellow","black","brown","cyan"],
+          data: [11, 21, 32, 14, 5, 54, 12, 8,23,44,1,4,13],
+          backgroundColor: ["#673ab7", "#2196f3", "#03a9f4", "red", "green", "yellow", "black", "brown", "cyan","purple","whitesmoke",'orange'],
           //hoverBackgroundColor: ["#673ab7", "#2196f3", "#03a9f4"]
         }],
-        option: {}
+        option: {},
+        mounted () {
+    this.renderChart(this.data, this.labels)
+  }
       };
+      
     },
     computed: {
       hackers() {
@@ -47,21 +51,21 @@
           if (this.chartInfo.hasOwnProperty(key)) {
             this.hackersArray.push(JSON.stringify(this.chartInfo[key].hacker));
             this.hackCount.push(JSON.stringify(this.chartInfo[key].encoding));
-      
+
           }
         }
         //this.data = [...new Set(this.hackCount)];  
         this.data = this.hackCount.slice(275);
         this.labels = [...new Set(this.hackersArray)];
-        this.labels = this.labels.slice(103);
-        
+        this.labels = this.labels.slice(97);
+
         //this.data = labels.map(function (word) {
         //return word.length;})
         //this.countArr.push(JSON.stringify(this.chartData[key].hacker.length));
         //console.log(this.labels);
       },
 
-  
+
       notice() {
         alert(typeof this.data);
       }
@@ -70,9 +74,16 @@
     created() {
       this.test()
 
+    },
+    mounted() {
+      this.createChart('planet-chart', this.planetChartData);
     }
   };
 </script>
 
 <style scoped>
+.card{
+  
+  position: fixed;
+}
 </style>
