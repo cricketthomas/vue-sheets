@@ -1,19 +1,26 @@
-import Vue from 'vue';
-import App from './App.vue';
-import Gapi from './Gapi.vue';
-import Charts from './Charts.vue';
-import EventBus from './event-bus.js';
+import Vue from 'vue'
+import App from './App.vue'
+import VueRouter from 'vue-router'
+import axios from 'axios';
 
-import "chart.js";
-import "hchs-vue-charts";
-Vue.use(window.VueCharts);
+//pages
+import Details from './Details.vue'
+import List from './List.vue'
 
+Vue.use(VueRouter)
 
-Vue.component('google-api', Gapi, require('./Gapi'))
-Vue.component('charts', Charts, require('./Charts'))
-
+//routes
+const routes = [
+  { path: '/list', component: List},
+  { path: '/details/:id', component: Details}
+]
+const router = new VueRouter({
+  routes: routes,
+  mode: 'history'
+})
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })

@@ -6,23 +6,33 @@
     <p>Results: {{filteredSheets.length}}</p>
     <div v-for="row in filteredSheets" class="sheets">
       Date: {{row.date}} Origin of Hack: {{row.country}}
-      <a v-bind:href="row.url" v-html="row.url">{{row.url}}</a>
+      <a href="#"> view details</a>
+      <!-- <a v-bind:href="row.url" v-html="row.url">{{row.url}}</a> -->
+
     </div>
   </div>
 </template>
 
+
+
 <script>
   import Vue from 'vue';
   import axios from 'axios';
-  import EventBus from './event-bus.js';
   Vue.prototype.$http = axios;
   export default {
-    props: ['sheets'],
+
     data() {
       return {
+        sheets: [],
         search: "",
       }
     },
+    created() {
+      axios.get('https://api.myjson.com/bins/bwjkk') //'https://sheetdb.io/api/v1/5b6da57ab78ee'
+        .then(response => (this.sheets = response.data)).then(response => (this.hackerCount = response.data)).catch(
+          error => console.log(error))
+    },
+
 
     computed: {
       filteredSheets() {
@@ -39,6 +49,7 @@
       },
     }
   }
+
 </script>
 
 <style>
@@ -58,4 +69,5 @@
     background: whitesmoke;
     padding: 1em;
   }
+
 </style>
