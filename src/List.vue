@@ -6,7 +6,7 @@
     <p>Results: {{filteredSheets.length}}</p>
     <div v-for="row in filteredSheets" class="sheets">
       Date: {{row.date}} Origin of Hack: {{row.country}}
-      <a href="#"> view details</a>
+      <router-link :to="{ name: 'details', params: { sheetId: sheets.id}}"> view details</router-link>
       <!-- <a v-bind:href="row.url" v-html="row.url">{{row.url}}</a> -->
 
     </div>
@@ -36,7 +36,7 @@
 
     computed: {
       filteredSheets() {
-        let searching = (this.search || "").toLowerCase()
+        let searching = (this.search || "").toLowerCase().trim()
         return this.sheets.filter(function (item) {
           let date = (item.date || "").toLowerCase()
           let urls = (item.url || "").toLowerCase()

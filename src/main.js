@@ -10,9 +10,17 @@ import List from './List.vue'
 Vue.use(VueRouter)
 
 //routes
-const routes = [
-  { path: '/list', component: List},
-  { path: '/details/:id', component: Details}
+const routes = [{
+    path: '/list',
+    name: 'list',
+    component: List
+  },
+  {
+    path: '/sheet/:sheetId/details',
+    name: 'details',
+    component: Details,
+    props: true
+  }
 ]
 const router = new VueRouter({
   routes: routes,
