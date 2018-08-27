@@ -1,4 +1,6 @@
-# vuesheetapp
+# Vue Sheets
+#### A simple app using Vue.js, Vue-router, Axios and Vue charts.js to read and display data about hacked websites. Styles with Bulma. 
+
 
 > A Vue.js project
 
