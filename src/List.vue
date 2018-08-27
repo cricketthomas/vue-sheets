@@ -1,16 +1,26 @@
 <template>
-  <div id="axios">
-    <h1>Sheet Data
-      <br/> Total: {{total}}</h1>
-    <input type="search" v-model="search" placeholder="Search Data" class="search" />
-    <p>Results: {{filteredSheets.length}}</p>
-    <div v-for="row in filteredSheets" class="sheets">
-      Date: {{row.date}} Origin of Hack: {{row.country}}
-      <router-link :to="{ name: 'details', params: { sheetId: sheets.id}}"> view details</router-link>
-      <!-- <a v-bind:href="row.url" v-html="row.url">{{row.url}}</a> -->
-
-    </div>
+  <div class="container">
+    <h1 class="title is-5">
+      Sheet Data | Total: {{total}}</h1>
+    <input type="text" v-model="search" placeholder="Search Data" class="input control is-loading" />
+    <p class="title is-6">Results: {{filteredSheets.length}}</p>
+    <table class="table is-centered">
+      <tr>
+        <th>Date:</th>
+        <th>Hack Country of Origin:</th>
+        <th>Information:</th>
+      </tr>
+      <tr v-for="row in filteredSheets">
+        <td>{{row.date}}</td>
+        <td>{{row.country}}</td>
+        <td>
+          <router-link :to="{ name: 'details', params: {url: row.url, hacker: row.hacker, server: row.server, os: row.os, date: row.date}}">
+            view details</router-link>
+        </td>
+      </tr>
+    </table>
   </div>
+
 </template>
 
 
@@ -18,6 +28,7 @@
 <script>
   import Vue from 'vue';
   import axios from 'axios';
+  import App from './App.vue'
   Vue.prototype.$http = axios;
   export default {
 
@@ -49,7 +60,6 @@
       },
     }
   }
-
 </script>
 
 <style>
@@ -66,8 +76,14 @@
   }
 
   .sheets {
+    justify-content: center;
+    display: flex;
     background: whitesmoke;
     padding: 1em;
   }
 
+  .table {
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>
