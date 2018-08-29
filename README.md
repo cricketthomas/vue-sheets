@@ -1,5 +1,11 @@
 # Vue Sheets
-#### A simple app using Vue.js, Vue-router, Axios and Vue charts.js to read and display data about hacked websites. Styles with Bulma. 
+#### A simple app using Vue.js, Vue-router, Axios and Vue charts.js to read and display data about hacked websites. Styled with Bulma. 
+This is a simple application that reads json data, then displays each item in a searchable list, then allows you to view details about each 
+data breach and see it on a map. Still working on it. 
+![Main Page](sshot1.png)
+![Details Page](sshot2.png)
+
+
 
 
 > A Vue.js project
