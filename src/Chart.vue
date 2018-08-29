@@ -1,55 +1,58 @@
 <template>
-<div>
-  <h2>Line</h2>
+  <section class="container">
+    <h1>Demo examples of vue-chartkick</h1>
+    <div class="columns">
+      <div class="column">
+        <h3>Line Chart</h3>
+        <line-chart :data="chartData"></line-chart>
 
-  <div class="card">
-    <header>
-      <chartjs-line v-bind:beginzero="beginZero"
-        v-bind:labels="labels[radio]"
-        v-bind:datalabel="dataLabel"
-        v-bind:data="data[radio]"
-        v-bind:backgroundcolor="bgColor"
-        v-bind:bordercolor="borderColor"
-        v-bind:bind="true"/>
-    </header>
-
-    <footer class="flex two">
-      <label>
-        <input type="radio" value="day"
-        v-bind:name="dataLabel"
-        v-model="radio">
-        <span class="checkable">Today</span>
-      </label>
-      <label>
-        <input type="radio" value="week"
-        v-bind:name="dataLabel"
-        v-model="radio">
-        <span class="checkable">This Week</span>
-      </label>
-    </footer>
-  </div>
-</div>
+      </div>
+      <div class="column">
+        <h3>Bar Chart</h3>
+        <!--Bar Chart example-->
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <h3>Scatter Chart</h3>
+        <!--Scatter chart example-->
+      </div>
+      <div class="column">
+        <h3>Downloadable Line Chart</h3>
+        <!--Downloadable line chart-->
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      beginZero: true,
-      labels: {
-        day: [8, 10, 12, 14, 16],
-        week: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-      },
-      dataLabel: "Foo",
-      radio: "day",
-      data: {
-        day: [1, 3, 5, 3, 1],
-        week: [12, 14, 16, 18, 11, 13, 15]
-      },
-      bgColor: "#ff8a80",
-      borderColor: "#f44336"
-    };
-  },
-  created(){}
-};
+  export default {
+    
+    name: 'VueChartKick',
+    data () {
+      return {
+        chartData: [['Jan', 44], ['Feb', 27], ['Mar', 60], ['Apr', 55], ['May', 37], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]]
+      }
+    }
+  }
+  
+        //this needs to be for the value of the countries  
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/inde
+
 </script>
+
+<style scoped>
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a {
+    color: #42b983;
+  }
+</style>

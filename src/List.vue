@@ -14,7 +14,7 @@
         <td>{{row.date}}</td>
         <td>{{row.country}}</td>
         <td>
-          <router-link :to="{ name: 'details', params: {url: row.url, hacker: row.hacker, server: row.server, os: row.os, date: row.date}}">
+          <router-link :to="{ name: 'details', params: {url: row.url, hacker: row.hacker, server: row.server, os: row.os, date: row.date, country: row.country}}">
             view details</router-link>
         </td>
       </tr>

@@ -12,10 +12,6 @@
       </ul>
     </div>
     <router-view></router-view>
-
-    <chart-bar> </chart-bar>
-
-
     <footer class="footer content has-text-centered">Simple app. Made with Vue.</footer>
   </div>
 </template>
@@ -28,17 +24,13 @@
   Vue.prototype.$http = axios;
   export default {
     components: {
+     Chart
 
     },
     data() {
       return {
-        sheets: [],
+        
       }
-    },
-    mounted() {
-      axios.get('https://api.myjson.com/bins/bwjkk') //'https://sheetdb.io/api/v1/5b6da57ab78ee'
-        .then(response => (this.sheets = response.data)).then(response => (this.hackerCount = response.data)).catch(
-          error => console.log(error))
     },
   }
 </script>

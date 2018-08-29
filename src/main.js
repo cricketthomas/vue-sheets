@@ -4,6 +4,8 @@ import VueRouter from 'vue-router';
 import axios from 'axios';
 import "chart.js";
 import "hchs-vue-charts";
+import Chartkick from 'chartkick'
+import VueChartkick from 'vue-chartkick'
 
 
 //pages components
@@ -15,6 +17,9 @@ import Chart from './Chart.vue';
 
 Vue.use(VueRouter);
 Vue.use(window.VueCharts);
+Vue.use(VueChartkick, { Chartkick })
+Vue.use(VueChartkick)
+
 Vue.component('chart-bar', Chart);
 
 //routes
@@ -24,7 +29,7 @@ const routes = [{
     component: List
   },
   {
-    path: 'list/details/:url/:hacker/:server/:os/:date',
+    path: 'list/details/:url/:hacker/:server/:os/:date/:country',
     name: 'details',
     component: Details,
     props: true
@@ -39,7 +44,7 @@ const router = new VueRouter({
 new Vue({
   props: ['sheets'],
   components: {
-    Chart
+    Chart, List, Details
   },
   el: '#app',
   router,
