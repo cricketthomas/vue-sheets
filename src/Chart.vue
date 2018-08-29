@@ -1,26 +1,17 @@
 <template>
   <section class="container">
-    <h1>Demo examples of vue-chartkick</h1>
+    <h1>vue-chartkick</h1>
     <div class="columns">
       <div class="column">
         <h3>Line Chart</h3>
-        <line-chart :data="chartData"></line-chart>
 
+        <line-chart :data="chartData"></line-chart>
+<!--
+//need regions, or continents.
+  <geo-chart :data="data" :library="{region: 'US', resolution: 'provinces'}"></geo-chart>
+ -->
       </div>
-      <div class="column">
-        <h3>Bar Chart</h3>
-        <!--Bar Chart example-->
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <h3>Scatter Chart</h3>
-        <!--Scatter chart example-->
-      </div>
-      <div class="column">
-        <h3>Downloadable Line Chart</h3>
-        <!--Downloadable line chart-->
-      </div>
+     
     </div>
   </section>
 </template>
