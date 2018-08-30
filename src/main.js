@@ -29,7 +29,7 @@ const routes = [{
     component: List
   },
   {
-    path: 'list/details/:url/:hacker/:server/:os/:date/:country',
+    path: 'list/details/:url/:hacker/:server/:os/:date/:country/:encoding',
     name: 'details',
     component: Details,
     props: true

@@ -1,9 +1,14 @@
 <template>
   <div class="container">
     <h1 class="title is-5">
-      Sheet Data | Total: {{total}}</h1>
+      Sheet Data | Total: {{this.sheets.length}}</h1>
     <input type="text" v-model="search" placeholder="Search Data" class="input control is-loading" />
     <p class="title is-6">Results: {{filteredSheets.length}}</p>
+
+    <h1 @click="listFormatting">test</h1>
+    <pie-chart :data="[['listFormatting',5], ['Strawberry', 23]]"></pie-chart>
+
+
     <table class="table is-centered">
       <tr>
         <th>Date:</th>
@@ -14,7 +19,7 @@
         <td>{{row.date}}</td>
         <td>{{row.country}}</td>
         <td>
-          <router-link :to="{ name: 'details', params: {url: row.url, hacker: row.hacker, server: row.server, os: row.os, date: row.date, country: row.country}}">
+          <router-link :to="{ name: 'details', params: {url: row.url, hacker: row.hacker, server: row.server, os: row.os, date: row.date, country: row.country, encoding: row.encoding}}">
             view details</router-link>
         </td>
       </tr>
@@ -36,10 +41,11 @@
       return {
         sheets: [],
         search: "",
+        sheetDate: [],
       }
     },
     created() {
-      axios.get('https://api.myjson.com/bins/bwjkk') //'https://sheetdb.io/api/v1/5b6da57ab78ee'
+      axios.get('https://api.myjson.com/bins/1h3wyk') //'https://sheetdb.io/api/v1/5b6da57ab78ee'
         .then(response => (this.sheets = response.data)).then(response => (this.hackerCount = response.data)).catch(
           error => console.log(error))
     },
@@ -58,8 +64,33 @@
       total() {
         return this.sheets.length
       },
+      listFormatting() {
+        var result = this.sheets.map(a => a.country); //mapping all
+        var resultNum = this.sheets.map(a =>  a.encoding)
+        var newArray = result.map((e, i) => e + resultNum[i]);
+        console.log(newArray)
+        console.log( new Set([result, resultNum]))
+        return this.sheets.filter(function (item) {
+          let country = item.country
+          let encoding = item.encoding
+          let newData = new Set(country, encoding)
+          //console.log(newData)
+          //          let newData = new Set(country, encoding)
+
+          //console.log(country, encoding)
+          return country
+        })
+      }
+
+    },
+
+    methods: {
+
+
+
     }
   }
+
 </script>
 
 <style>
@@ -86,4 +117,5 @@
     margin-left: auto;
     margin-right: auto;
   }
+
 </style>

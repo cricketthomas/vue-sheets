@@ -17,8 +17,11 @@
 </template>
 
 <script>
+  import App from './App.vue';
+  import List from './List.vue';
+  import Chart from './Chart.vue';
   export default {
-    
+    props: ['sheets'],
     name: 'VueChartKick',
     data () {
       return {
