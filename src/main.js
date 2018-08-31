@@ -17,10 +17,12 @@ import Chart from './Chart.vue';
 
 Vue.use(VueRouter);
 Vue.use(window.VueCharts);
-Vue.use(VueChartkick, { Chartkick })
+Vue.use(VueChartkick, {
+  Chartkick
+})
 Vue.use(VueChartkick)
 
-Vue.component('chart-bar', Chart);
+Vue.component('charts', Chart);
 
 //routes
 const routes = [{
@@ -33,7 +35,13 @@ const routes = [{
     name: 'details',
     component: Details,
     props: true
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Chart
   }
+
 ]
 const router = new VueRouter({
   routes: routes,
@@ -44,7 +52,9 @@ const router = new VueRouter({
 new Vue({
   props: ['sheets'],
   components: {
-    Chart, List, Details
+    Chart,
+    List,
+    Details
   },
   el: '#app',
   router,

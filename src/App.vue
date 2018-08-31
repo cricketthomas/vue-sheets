@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div id="app">
     <h1 class="title is-3">Websites Hacked Explorer</h1>
     <div class="tabs is-centered">
@@ -11,7 +11,6 @@
         </li>
       </ul>
     </div>
-    <pie-chart  v-show="false"  :data="[['Blueberry', 44], ['Strawberry', 23]]"></pie-chart>
     <router-view></router-view>
     <footer class="footer content has-text-centered">Simple app. Made with Vue.</footer>
   </div>
@@ -30,7 +29,7 @@
     },
     data() {
       return {
-        
+       
       }
     },
   }

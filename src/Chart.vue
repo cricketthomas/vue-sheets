@@ -1,18 +1,12 @@
 <template>
   <section class="container">
-    <h1>vue-chartkick</h1>
-    <div class="columns">
-      <div class="column">
-        <h3>Line Chart</h3>
-
-        <line-chart :data="chartData"></line-chart>
-<!--
+        <h1 class=" title is-4">Summary</h1>
+        <bar-chart  class="container" :data="this.ArrayNew" xtitle="Region" ytitle="Number of Hacks" width="100vw"
+          height="60vh"></bar-chart>
+        <!--
 //need regions, or continents.
   <geo-chart :data="data" :library="{region: 'US', resolution: 'provinces'}"></geo-chart>
  -->
-      </div>
-     
-    </div>
   </section>
 </template>
 
@@ -23,15 +17,45 @@
   export default {
     props: ['sheets'],
     name: 'VueChartKick',
-    data () {
+    data() {
       return {
-        chartData: [['Jan', 44], ['Feb', 27], ['Mar', 60], ['Apr', 55], ['May', 37], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]]
+        ArrayNew: [
+          ['Africa', 8],
+          ['America', 1],
+          ['Asia', 36],
+          ['Australia', 2],
+          ['Bhutan', 2],
+          ['Brazil', 13],
+          ['Bulgaria', 1],
+          ['Canada', 3],
+          ['China', 3],
+          ['EastEuro', 5],
+          ['France', 24],
+          ['Germany', 2],
+          ['Hong Kong', 1],
+          ['India', 4],
+          ['Indonesia', 19],
+          ['Italy', 4],
+          ['Netherlands', 5],
+          ['Oman', 1],
+          ['Oseania', 1],
+          ['Paraguay', 1],
+          ['Poland', 1],
+          ['Romania', 1],
+          ['SouthAmerica', 30],
+          ['Thailand', 6],
+          ['Ukraine', 4],
+          ['United Kingdom', 10],
+          ['United States', 48],
+          ['Unknown', 46],
+          ['WestEuro', 9]
+        ]
       }
     }
   }
-  
-        //this needs to be for the value of the countries  
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/inde
+
+  //this needs to be for the value of the countries  
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/inde
 
 </script>
 
@@ -49,4 +73,5 @@
   a {
     color: #42b983;
   }
+
 </style>

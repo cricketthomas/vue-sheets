@@ -2,21 +2,21 @@
   <div>
     <h1 class="title is-4">Details Page</h1>
     <div class="tile is-20 is-vertical" v-show="isVisible">
-      <hr>
-      <geo-chart :data="chartData"></geo-chart>
-
-      <ul class="tile is-child notification is-primary">
-        <button class="delete" @click="close" aria-label='close'></button>
-        <h4 class="title is-5">Details for this record: </h4>
-        <li> Site Breached:
-          <a v-bind:href="$route.params.url" v-html="$route.params.url">{{$route.params.url}}</a>
-        </li>
-        <li>Hacker: {{ $route.params.hacker }}</li>
-        <li>Server: {{ $route.params.server }}</li>
-        <li>OS: {{ $route.params.os }}</li>
-        <li>Date: {{ $route.params.date }}</li>
-        <li>Nation/Region: {{ $route.params.country }}</li>
-      </ul>
+      <geo-chart class="container" :data="chartData"></geo-chart>
+      <div class="tileSize container">
+        <ul class="tile is-child notification is-primary">
+          <button class="delete" @click="close" aria-label='close'></button>
+          <h4 class="title is-5">Details for this record: </h4>
+          <li> Site Breached:
+            <a v-bind:href="$route.params.url" v-html="$route.params.url">{{$route.params.url}}</a>
+          </li>
+          <li>Hacker: {{ $route.params.hacker }}</li>
+          <li>Server: {{ $route.params.server }}</li>
+          <li>OS: {{ $route.params.os }}</li>
+          <li>Date: {{ $route.params.date }}</li>
+          <li>Nation/Region: {{ $route.params.country }}</li>
+        </ul>
+      </div>
     </div>
     <router-view></router-view>
   </div>
@@ -41,6 +41,7 @@
     methods: {
       close() {
         this.isVisible = false;
+        window.history.back()
       },
 
 
@@ -242,3 +243,10 @@
   }
 
 </script>
+<style>
+  .tileSize {
+    width: 90vw;
+
+  }
+
+</style>
