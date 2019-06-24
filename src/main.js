@@ -6,23 +6,24 @@ import "chart.js";
 import "hchs-vue-charts";
 import Chartkick from 'chartkick'
 import VueChartkick from 'vue-chartkick'
-
+import NestTest from './nestTest.vue';
 
 //pages components
 import Details from './Details.vue';
 import List from './List.vue';
 import Chart from './Chart.vue';
-
-
+import Test from './test.vue';
 
 Vue.use(VueRouter);
 Vue.use(window.VueCharts);
 Vue.use(VueChartkick, {
   Chartkick
 })
-Vue.use(VueChartkick)
+Vue.use(VueChartkick);
 
 Vue.component('charts', Chart);
+Vue.component('Test', Test);
+Vue.component('NestTest', NestTest);
 
 //routes
 const routes = [{
@@ -31,7 +32,7 @@ const routes = [{
     component: List
   },
   {
-    path: 'list/details/:url/:hacker/:server/:os/:date/:country/:encoding',
+    path: '/details/:url/:hacker/:server/:os/:date/:country/:encoding',
     name: 'details',
     component: Details,
     props: true
@@ -54,7 +55,8 @@ new Vue({
   components: {
     Chart,
     List,
-    Details
+    Details, 
+    Test
   },
   el: '#app',
   router,

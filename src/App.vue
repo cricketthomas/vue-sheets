@@ -1,5 +1,6 @@
 <template> 
   <div id="app">
+    <test :testData="testData" v-model="testData" />
     <h1 class="title is-3">Websites Hacked Explorer</h1>
     <div class="tabs is-centered">
       <ul>
@@ -20,6 +21,7 @@
   import Vue from 'vue';
   import axios from 'axios';
   import Chart from './Chart.vue';
+import Test from './test.vue';
 
   Vue.prototype.$http = axios;
   export default {
@@ -29,7 +31,9 @@
     },
     data() {
       return {
-       
+       testData: {
+         myString: ""
+       }
       }
     },
   }

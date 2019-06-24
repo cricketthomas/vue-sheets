@@ -235,6 +235,7 @@
     },
     mounted() {
       this.sorting();
+      console.log(`Current data: ${this.sheets}`)
     },
     computed: {
 
